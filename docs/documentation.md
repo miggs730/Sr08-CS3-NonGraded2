@@ -1,6 +1,7 @@
 # Documentation ✨
 **2nd Graded Exercise**<br>
 *Lawrence Miguel Cereñado*
+*Version 1*
 
 Hello there! This is a documentation.md file containing the steps that I have done for the club signup website to work! This also contains the references I used for making this amazing webpage:> 💓 
 
@@ -61,3 +62,4 @@ as of time 3:50AM, none so far.
 
 
 https://www.youtube.com/watch?v=JB7YD7OKm5g
+https://www.youtube.com/watch?v=4dkNn93DIx4
