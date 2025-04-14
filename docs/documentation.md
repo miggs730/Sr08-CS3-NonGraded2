@@ -1,7 +1,7 @@
 # Documentation ✨
 **2nd Graded Exercise**<br>
 *Lawrence Miguel Cereñado*
-*| Version 2*
+*| Version 3*
 
 Hello there! This is a documentation.md file containing the steps that I have done for the club signup website to work! This also contains the references I used for making this amazing webpage:> 💓 
 
@@ -139,21 +139,53 @@ What this code does is:
 Finally, we update the `users.json` file containing the new object with the new data! Then we redirect it to the '/join' page for the user to click the See Members list.
 
 ## Some Images of Users
+![member list](image-1.png)
+``` json
+    {
+      "studentID": "713321",
+      "fullName": "Adam Evans",
+      "birthday": "2012-02-11",
+      "email": "adamevans@gmail.com",
+      "mobile": "9112451222",
+      "gradeLevel": "grade9",
+      "type": "extern",
+      "preferredClub": "Computron",
+      "reason": "I like coding! "
+    },
+    {
+      "studentID": "819122",
+      "fullName": "John Evans",
+      "birthday": "2007-02-11",
+      "email": "johnevans@gmail.com",
+      "mobile": "71233216",
+      "gradeLevel": "grade11",
+      "type": "intern",
+      "preferredClub": "Alianti",
+      "reason": "I wanna play frisbee!"
+    }
+```
 
+Thank you! :>
 
+## Extras
+If you want the GitHub reppsitory link of my project, see this link!
 
-
+https://github.com/miggs730/Sr08-CS3-NonGraded2/
 # 📖 References
-[to be done in APA]
-https://www.youtube.com/watch?v=JB7YD7OKm5g
-https://www.youtube.com/watch?v=4dkNn93DIx4
-https://www.youtube.com/watch?v=tEwmIoU1NUg
-https://developer.stackblitz.com/guides/user-guide/importing-projects
-https://www.markdownguide.org/cheat-sheet/
-https://www.markdownguide.org/tools/vscode/
-https://developer.stackblitz.com/guides/user-guide/getting-started
-https://developer.stackblitz.com/guides/user-guide/importing-projects
-https://www.w3schools.com/js/js_errors.asp
 
+Getting started. (n.d.). StackBlitz Docs. https://developer.stackblitz.com/guides/user-guide/getting-started 
 
-git push origin master -> git commit -am "version x" -> git push origin master
+How To 1 Minute. (2022, April 16). How to change github repository from private to public 2025 [Video]. YouTube. https://www.youtube.com/watch?v=tEwmIoU1NUg 
+
+Importing projects. (n.d.-a). StackBlitz Docs. https://developer.stackblitz.com/guides/user-guide/importing-projects 
+
+Markdown cheat Sheet | Markdown Guide. (n.d.). https://www.markdownguide.org/cheat-sheet/ 
+
+The Code City. (2024a, April 9). How to Commit and Push to Github from VSCode (2024 Update) [Video]. YouTube. https://www.youtube.com/watch?v=4dkNn93DIx4 
+
+The Code City. (2024b, September 30). How to upload project to GitHub using Visual Studio Code (2024) | Push to GitHub from VSCode [Video]. YouTube. https://www.youtube.com/watch?v=JB7YD7OKm5g 
+
+VS Code | Markdown Guide. (n.d.). https://www.markdownguide.org/tools/vscode/
+
+ W3Schools.com. (n.d.). https://www.w3schools.com/js/js_errors.asp
+
