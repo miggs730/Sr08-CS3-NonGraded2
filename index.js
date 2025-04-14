@@ -70,8 +70,31 @@ app.get('/join', (req, res) => {
   }
 });
 
-app.post('/join', (req, res) => {
-  
+app.post('/submit-form', (req, res) => {
+  const {studentID, fullName, birthday, email, mobile, gradeLevel, type, organization, preferredClub, reason} = req.body; 
+  console.log(`Processing information for ${studentID}, whose name is ${fullName}`);
+  try {
+    // read existing clubMembers data
+    console.log(`Reading existing user data...`);
+    const clubMembers = JSON.parse(fs.readFileSync(usersFilePath));
+
+    // assign a constant n
+    const n = clubMembers[`students`].length;
+    // assign a new value in the array at n
+    // this makes a new object in the said array for saving data 
+    clubMembers[`students`][n] = {studentID, fullName, birthday, email, mobile, gradeLevel, type, organization, preferredClub, reason};
+    console.log(`Saving updates user data...`);
+    
+    // overwrite the JSON file to include the clubMembers object with the new member object
+    fs.writeFileSync(usersFilePath, JSON.stringify(clubMembers, null, 2));
+    console.log(`User data saved successfully`);
+    console.log(`Redirecting to info page...`) ;
+    res.redirect('/join');
+  }
+  catch (error) {
+    console.log(`Error processing user submission:`, error);
+    res.status(500).send(`Error saving user data`)
+  }
 })
 // enable web service
 const PORT = 3000;

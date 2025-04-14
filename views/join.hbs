@@ -55,7 +55,7 @@
         <select id="preferredClub" name="preferredClub" required>
             <option value = ""> Select a club you prefer! </option>
             {{#each clubsList}} 
-            <option value = "">{{this}}</option>
+            <option value = {{this}}>{{this}}</option>
             {{/each}}
         </select>
         

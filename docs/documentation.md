@@ -1,10 +1,22 @@
 # Documentation ✨
 **2nd Graded Exercise**<br>
 *Lawrence Miguel Cereñado*
-*Version 1*
+*| Version 2*
 
 Hello there! This is a documentation.md file containing the steps that I have done for the club signup website to work! This also contains the references I used for making this amazing webpage:> 💓 
 
+<h2> To Do List (For keeping track!) </h2>
+
+- 1️⃣ Get Route for join.hbs file ✅
+- 2️⃣ Selecting Options in our HBS file ✅
+- 3️⃣ POST Route for the join.hbs file ✅
+  - 3️⃣.1️⃣ Read the JSON file ✅
+  - 3️⃣.2️⃣ Obtain the data to manipulate in the server JS file ✅
+  - 3️⃣.3️⃣ Manipulate the data to update it ✅
+  - 3️⃣.4️⃣ Update the JSON file itself ✅
+  - 3️⃣.5️⃣ Redirecting to the HBS file ✅
+- 4️⃣ Add some users! 
+Done! 🎉
 ## 1️⃣ GET Route for the  join.hbs file
 
 Firstly, we have to resolve some routes. One of those routes involves our join.hbs file.
@@ -56,10 +68,92 @@ Now that we have our file loaded, we have to address issues in our hbs file. Not
 We use the {{#each}} template in HBS for us to iterate over the clubsList array that we have obtained in Step 1. Then we use {{this}} for the option to show up!
 
 ## 3️⃣ POST Route for the join.hbs file 
-//
+Setting a POST route is essential for forms! Now that we have the select option part done, we can now adress to the form submission part! Let's set the method of the whole form to `method = POST`.
+
+``` handlebars
+    <form action="/submit-form" method="post" class="container"
+          onsubmit = "return confirm('Accept Student-Sign-Up')"      
+          onreset = "return confirm('Entered data will be lost. Continue?')" 
+    > 
+    <!-- ... -->
+    </form>
+```
+Then, let's switch over to the `index.js` file.
+
+We will create a POST route using `app.post()`, using this code: 
+``` javascript
+app.post('/submit-form', (req, res) => {
+// ....
+}); 
+```
+Essentially, we have to do four things:
+
+**1. Read the JSON file and Obtaining Form Data**
+  
+  We can do this through some code:
+  ``` javascript
+app.post('/submit-form', (req, res) => {
+  const {studentID, fullName, birthday, email, mobile, gradeLevel, type, organization, preferredClub, reason} = req.body; 
+  try {
+  // read existing clubMembers data
+    console.log(`Reading existing user data...`);
+    const clubMembers = JSON.parse(fs.readFileSync(usersFilePath));
+  }
+  catch (error) {
+    console.log(`Error processing user submission:`, error);
+    res.status(500).send(`Error saving user data`)
+  }});
+  ```
+We use req.body so that we can read the body of the HTTP request (form data), which we can access using the said method. We assign the data into an object constant with the properties (this is determined by the properties 'names' in the HTML form).
+
+We then use the try, catch method to allow us to debug the code if necessary.
+
+Finally, we read the existing `user.json` file making use of the FS module's methods.
+
+**2. Manipulating Data**
+
+Now that we have our data from the form, the next thing to do is to somehow insert it in our current `user.json` file. First though, we have to manipulate the data for it to work through some JS methods.
+
+``` javascript
+    // assign a constant n
+    const n = clubMembers[`students`].length;
+    // assign a new value in the array at n
+    // this makes a new object in the said array for saving data 
+    clubMembers[`students`][n] = {studentID, fullName, birthday, email, mobile, gradeLevel, type, organization, preferredClub, reason};
+    console.log(`Saving updates user data...`);
+    
+```
+What this code does is:
+
+- Assigning a constant `n` to the length of the current array. In actuality, this is equal to the cardinality of the last array item plus 1.
+- We then insert the object data in the `students` array in the `clubMembers` JSON object. In JS, we can express this through bracket notation.
+- We do some updates to the terminal for debugging.
+
+**3. Updating the Data**
+``` javascript
+    fs.writeFileSync(usersFilePath, JSON.stringify(clubMembers, null, 2));
+    console.log(`User data saved successfully`);
+    console.log(`Redirecting to info page...`) ;
+    res.redirect('/join');
+```
+Finally, we update the `users.json` file containing the new object with the new data! Then we redirect it to the '/join' page for the user to click the See Members list.
+
+## Some Images of Users
+
+
+
+
 # 📖 References
-as of time 3:50AM, none so far.
-
-
+[to be done in APA]
 https://www.youtube.com/watch?v=JB7YD7OKm5g
 https://www.youtube.com/watch?v=4dkNn93DIx4
+https://www.youtube.com/watch?v=tEwmIoU1NUg
+https://developer.stackblitz.com/guides/user-guide/importing-projects
+https://www.markdownguide.org/cheat-sheet/
+https://www.markdownguide.org/tools/vscode/
+https://developer.stackblitz.com/guides/user-guide/getting-started
+https://developer.stackblitz.com/guides/user-guide/importing-projects
+https://www.w3schools.com/js/js_errors.asp
+
+
+git push origin master -> git commit -am "version x" -> git push origin master
